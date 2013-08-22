@@ -15,6 +15,7 @@
   if (!$.support.touch) {
     return;
   }
+  
 
   var mouseProto  = $.ui.mouse.prototype,
       _mouseInit  = mouseProto._mouseInit,
@@ -28,6 +29,11 @@
       };
 
   function makeMouseEvent (event) {
+
+    var $target = $(event.target);  
+    if(!($target.hasClass('fy-draggable')) ) {  
+        return;
+    }
 
     var touch = event.originalEvent.changedTouches[0];
 
